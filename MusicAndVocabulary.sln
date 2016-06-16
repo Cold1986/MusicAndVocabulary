@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicAndVocabulary", "MusicAndVocabulary\MusicAndVocabulary.csproj", "{282C38BE-6603-4041-AE68-B82FF0556787}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Web", "01.Web", "{AB82D0F5-EEBA-4429-A944-C0CDD88CB9C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.WebApi", "02.WebApi", "{D6160E79-3624-4256-A8BA-5171BC97BD16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Document", "00.Document", "{BFBD06C3-604A-43FF-9507-2831D7E83ED1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Model", "03.Model", "{F73F0855-3491-4D8F-9E0D-25648D736219}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicAndVocabulary.Enum", "MusicAndVocabulary.Enum\MusicAndVocabulary.Enum.csproj", "{53D7A0AA-8BEB-45EF-B5A5-2725F528C411}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.IBiz", "04.IBiz", "{559FC1FD-27B9-49F5-8D4C-AEA541F7A7F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.Biz", "05.Biz", "{F6F32F57-ED8F-4F39-87CA-14200F9B32FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicAndVocabulary.Model", "MusicAndVocabulary.Model\MusicAndVocabulary.Model.csproj", "{A8B84842-3EFE-4131-889F-8DDE625B96C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{282C38BE-6603-4041-AE68-B82FF0556787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{282C38BE-6603-4041-AE68-B82FF0556787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{282C38BE-6603-4041-AE68-B82FF0556787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{282C38BE-6603-4041-AE68-B82FF0556787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D7A0AA-8BEB-45EF-B5A5-2725F528C411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D7A0AA-8BEB-45EF-B5A5-2725F528C411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D7A0AA-8BEB-45EF-B5A5-2725F528C411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D7A0AA-8BEB-45EF-B5A5-2725F528C411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8B84842-3EFE-4131-889F-8DDE625B96C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B84842-3EFE-4131-889F-8DDE625B96C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B84842-3EFE-4131-889F-8DDE625B96C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B84842-3EFE-4131-889F-8DDE625B96C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{282C38BE-6603-4041-AE68-B82FF0556787} = {AB82D0F5-EEBA-4429-A944-C0CDD88CB9C4}
+		{53D7A0AA-8BEB-45EF-B5A5-2725F528C411} = {F73F0855-3491-4D8F-9E0D-25648D736219}
+		{A8B84842-3EFE-4131-889F-8DDE625B96C9} = {F73F0855-3491-4D8F-9E0D-25648D736219}
+	EndGlobalSection
+EndGlobal
