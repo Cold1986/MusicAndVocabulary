@@ -13,6 +13,7 @@ namespace MusicAndVocabulary.Model
     [Bind(Exclude = "RoleId")]
     public class Roles
     {
+        [Key]
         [ScaffoldColumn(true)]
         public int RoleId { get; set; }
 
