@@ -1,4 +1,5 @@
-﻿using MusicAndVocabulary.Model;
+﻿using MusicAndVocabulary.Facade;
+using MusicAndVocabulary.Model;
 using MusicAndVocabulary.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -35,26 +36,34 @@ namespace MusicAndVocabulary.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Select(f => f.UserName == model.UserName);
-                //var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                //var result = await UserManager.CreateAsync(user, model.Password);
-                //if (result.Succeeded)
-                //{
-                //    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                var user = new User { UserName = model.UserName, Email = model.Email, Password = model.Password, UserGId = Guid.NewGuid() };
+                var result = await AccountNotifyBiz.Register(user);
 
-                //    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                //    // Send an email with this link
-                //    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                //    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                //    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                if (result.Succeeded)
+                {
+                    //    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                //    return RedirectToAction("Index", "Home");
-                //}
-                //AddErrors(result);
+                    //    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    //    // Send an email with this link
+                    //    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(new string[] { "测试返回异常" });
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private void AddErrors(string[] result)
+        {
+            foreach (var error in result)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }

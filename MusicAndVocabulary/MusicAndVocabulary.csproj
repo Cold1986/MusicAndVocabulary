@@ -183,7 +183,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -202,6 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Attributes\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -214,9 +217,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MusicAndVocabulary.Entity\MusicAndVocabulary.Entity.csproj">
+      <Project>{6dee2f09-410e-4cf0-a911-69d8c5f32bbf}</Project>
+      <Name>MusicAndVocabulary.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicAndVocabulary.Enum\MusicAndVocabulary.Enum.csproj">
       <Project>{53d7a0aa-8beb-45ef-b5a5-2725f528c411}</Project>
       <Name>MusicAndVocabulary.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicAndVocabulary.Facade\MusicAndVocabulary.Facade.csproj">
+      <Project>{62a55ba6-e592-4062-be4e-dffbc69ed63f}</Project>
+      <Name>MusicAndVocabulary.Facade</Name>
     </ProjectReference>
     <ProjectReference Include="..\MusicAndVocabulary.Model\MusicAndVocabulary.Model.csproj">
       <Project>{a8b84842-3efe-4131-889f-8dde625b96c9}</Project>

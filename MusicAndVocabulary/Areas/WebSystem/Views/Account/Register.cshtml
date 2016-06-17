@@ -1,4 +1,4 @@
-﻿@model MusicAndVocabulary.ViewModels.RegisterViewModel
+﻿@model MusicAndVocabulary.Areas.WebSystem.ViewModels.RegisterViewModel
 @{
     ViewBag.Title = "注册";
 }
@@ -11,6 +11,7 @@
     @Html.AntiForgeryToken()
     <h4>创建新用户</h4>
     <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -35,7 +36,6 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
-    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="注册" />
