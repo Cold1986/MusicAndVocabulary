@@ -19,7 +19,13 @@ namespace MusicAndVocabulary.Enum
         /// 可用
         /// </summary>
         [Description("可以使用")]
-        InUse = 1
+        InUse = 1,
+
+        /// <summary>
+        /// 未激活
+        /// </summary>
+        [Description("未激活")]
+        Inactive = 2
 
     }
 }

@@ -12,5 +12,7 @@ namespace MusicAndVocabulary.Model
         public DbSet<Roles> Roles { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<User2Roles> User2Roles { get; set; }
     }
 }

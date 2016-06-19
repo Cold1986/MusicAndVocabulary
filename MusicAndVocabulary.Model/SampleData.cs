@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace MusicAndVocabulary.Model
 {
-    public class SampleData : CreateDatabaseIfNotExists<MusicAndVocabularyEntities>
+    //CreateDatabaseIfNotExists
+    public class SampleData : DropCreateDatabaseIfModelChanges<MusicAndVocabularyEntities>
     {
         protected override void Seed(MusicAndVocabularyEntities context)
         {
@@ -22,14 +23,18 @@ namespace MusicAndVocabulary.Model
             //初始用户表
             var user = new List<User>
             {
-                new User {UserName="AdminCold",Email="735255078@qq.com",Password="admincold",UserGId=Guid.NewGuid() }
+                new User {UserName="AdminCold",Email="735255078@qq.com",Password="admincold",UserGId=Guid.NewGuid().ToString("N"),Status=Enum.EnumStatus.InUse },
+                new User {UserName="UserCold",Email="735255079@qq.com",Password="usercold",UserGId=Guid.NewGuid().ToString("N"),Status=Enum.EnumStatus.InUse },
+                new User {UserName="GuestCold",Email="735255080@qq.com",Password="guestcold",UserGId=Guid.NewGuid().ToString("N"),Status=Enum.EnumStatus.InUse }
             };
 
             //给用户添加权限
-            var user2Roles = new List<User2Roles>
+            new List<User2Roles>
             {
-                new User2Roles {User= user.Single(g=>g.UserName=="AdminCold"),Roles=roles.Single(r=>r.Role=="Admin" ) }
-            };
+                new User2Roles {User= user.Single(g=>g.UserName=="AdminCold"),Roles=roles.Single(r=>r.Role=="Admin" ) },
+                new User2Roles {User= user.Single(g=>g.UserName=="UserCold"),Roles=roles.Single(r=>r.Role=="User" ) },
+                new User2Roles {User= user.Single(g=>g.UserName=="GuestCold"),Roles=roles.Single(r=>r.Role=="Guest" ) },
+            }.ForEach(a => context.User2Roles.Add(a));
         }
     }
 }
