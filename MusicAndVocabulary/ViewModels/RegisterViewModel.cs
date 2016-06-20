@@ -40,5 +40,10 @@ namespace MusicAndVocabulary.ViewModels
         [Display(Name = "密码确认")]
         [Compare("Password", ErrorMessage = "两次密码不一致.")]
         public string ConfirmPassword { get; set; }
+
+
+        [Required]
+        [Display(Name = "验证码")]
+        public string ValidateCode { get; set; }
     }
 }

@@ -220,6 +220,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MusicAndVocabulary.AccountLogic\MusicAndVocabulary.Implement.csproj">
+      <Project>{07534d15-3932-4cac-a97a-da2f8166312b}</Project>
+      <Name>MusicAndVocabulary.Implement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicAndVocabulary.CommonLogic\MusicAndVocabulary.CommonLogic.csproj">
+      <Project>{121da341-52d7-4962-881b-5cfa3983b45d}</Project>
+      <Name>MusicAndVocabulary.CommonLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MusicAndVocabulary.Entity\MusicAndVocabulary.Entity.csproj">
       <Project>{6dee2f09-410e-4cf0-a911-69d8c5f32bbf}</Project>
       <Name>MusicAndVocabulary.Entity</Name>
@@ -227,6 +235,10 @@
     <ProjectReference Include="..\MusicAndVocabulary.Enum\MusicAndVocabulary.Enum.csproj">
       <Project>{53d7a0aa-8beb-45ef-b5a5-2725f528c411}</Project>
       <Name>MusicAndVocabulary.Enum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MusicAndVocabulary.Interface\MusicAndVocabulary.Interface.csproj">
+      <Project>{0075576c-aa31-43f1-acd6-ea5f780e98d4}</Project>
+      <Name>MusicAndVocabulary.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\MusicAndVocabulary.Model\MusicAndVocabulary.Model.csproj">
       <Project>{a8b84842-3efe-4131-889f-8dde625b96c9}</Project>

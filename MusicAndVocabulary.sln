@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicAndVocabulary.Implemen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicAndVocabulary.Interface", "MusicAndVocabulary.Interface\MusicAndVocabulary.Interface.csproj", "{0075576C-AA31-43F1-ACD6-EA5F780E98D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicAndVocabulary.WebApi", "MusicAndVocabulary.WebApi\MusicAndVocabulary.WebApi.csproj", "{48B6A40D-0AF2-4DE5-917D-7CB5AFCD17B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{0075576C-AA31-43F1-ACD6-EA5F780E98D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0075576C-AA31-43F1-ACD6-EA5F780E98D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0075576C-AA31-43F1-ACD6-EA5F780E98D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B6A40D-0AF2-4DE5-917D-7CB5AFCD17B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B6A40D-0AF2-4DE5-917D-7CB5AFCD17B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B6A40D-0AF2-4DE5-917D-7CB5AFCD17B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B6A40D-0AF2-4DE5-917D-7CB5AFCD17B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,5 +81,6 @@ Global
 		{121DA341-52D7-4962-881B-5CFA3983B45D} = {F6F32F57-ED8F-4F39-87CA-14200F9B32FC}
 		{07534D15-3932-4CAC-A97A-DA2F8166312B} = {F6F32F57-ED8F-4F39-87CA-14200F9B32FC}
 		{0075576C-AA31-43F1-ACD6-EA5F780E98D4} = {559FC1FD-27B9-49F5-8D4C-AEA541F7A7F6}
+		{48B6A40D-0AF2-4DE5-917D-7CB5AFCD17B1} = {D6160E79-3624-4256-A8BA-5171BC97BD16}
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,8 @@
-﻿using MusicAndVocabulary.Model;
+﻿using MusicAndVocabulary.Implement;
+using MusicAndVocabulary.Interface;
+using MusicAndVocabulary.Model;
 using MusicAndVocabulary.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -9,6 +12,7 @@ namespace MusicAndVocabulary.Controllers
     public class AccountController : Controller
     {
         private MusicAndVocabularyEntities db = new MusicAndVocabularyEntities();
+        IValidCodeBiz validCodeBiz = new ValidCodeBiz();
 
         // GET: Account
         public ActionResult Index()
@@ -19,6 +23,7 @@ namespace MusicAndVocabulary.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.ImgValidCode = validCodeBiz.CreateNewValidCode();
             return View();
         }
 
@@ -32,7 +37,14 @@ namespace MusicAndVocabulary.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Roles.Select(f => f.Status == Enum.EnumStatus.InUse);
+                var result = validCodeBiz.CheckValidCode(model.ValidateCode);
+                if (result.Succeeded)
+                {
+                    //to do 校验用户是否可注册
+                    return RedirectToAction("Index", "Home");
+                }
+
+                //db.Roles.Select(f => f.Status == Enum.EnumStatus.InUse);
                 //var user = new User { UserName = model.UserName, Email = model.Email, Password = model.Password, UserGId = Guid.NewGuid() };
                 //var result = await AccountNotifyBiz.Register(user);
 
@@ -48,14 +60,15 @@ namespace MusicAndVocabulary.Controllers
 
                 //    return RedirectToAction("Index", "Home");
                 //}
-                AddErrors(new string[] { "测试返回异常" });
+                AddErrors(result.Errors);
+                ViewBag.ImgValidCode = validCodeBiz.CreateNewValidCode();
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
-        private void AddErrors(string[] result)
+        private void AddErrors(IEnumerable<string> result)
         {
             foreach (var error in result)
             {
