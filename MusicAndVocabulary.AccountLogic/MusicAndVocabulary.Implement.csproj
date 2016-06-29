@@ -34,8 +34,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\CommonDll\Cold.CommonLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +57,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidCodeBiz.cs" />
+    <Compile Include="ServiceRule.cs" />
+    <Compile Include="UserBiz.cs" />
+    <Compile Include="ValidCodeRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MusicAndVocabulary.Entity\MusicAndVocabulary.Entity.csproj">
@@ -61,6 +74,14 @@
       <Project>{0075576c-aa31-43f1-acd6-ea5f780e98d4}</Project>
       <Name>MusicAndVocabulary.Interface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MusicAndVocabulary.Model\MusicAndVocabulary.Model.csproj">
+      <Project>{a8b84842-3efe-4131-889f-8dde625b96c9}</Project>
+      <Name>MusicAndVocabulary.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

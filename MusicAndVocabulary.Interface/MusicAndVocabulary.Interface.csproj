@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="IValidCodeBiz.cs" />
+    <Compile Include="IServiceRule.cs" />
+    <Compile Include="IUserBiz.cs" />
+    <Compile Include="IValidCodeRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace MusicAndVocabulary.Entity
     /// <summary>
     /// 通用结果返回
     /// </summary>
-    public class CommonResult
+    public class CommonResponse<T>
     {
         /// <summary>
         /// 是否成功
@@ -17,8 +17,8 @@ namespace MusicAndVocabulary.Entity
         public bool Succeeded { get; set; }
 
         /// <summary>
-        /// 错误信息
+        /// 信息
         /// </summary>
-        public IEnumerable<string> Errors { get; set; }
+        public T Messages { get; set; }
     }
 }

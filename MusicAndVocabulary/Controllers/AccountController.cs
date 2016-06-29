@@ -2,6 +2,7 @@
 using MusicAndVocabulary.Interface;
 using MusicAndVocabulary.Model;
 using MusicAndVocabulary.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,10 +10,12 @@ using System.Web.Mvc;
 
 namespace MusicAndVocabulary.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : AbstractController
     {
         private MusicAndVocabularyEntities db = new MusicAndVocabularyEntities();
-        IValidCodeBiz validCodeBiz = new ValidCodeBiz();
+        IValidCodeRule _validCodeBiz = new ValidCodeRule();
+        IServiceRule _serviceRule = new ServiceRule();
+        IUserBiz _userBiz = new UserBiz();
 
         // GET: Account
         public ActionResult Index()
@@ -23,7 +26,17 @@ namespace MusicAndVocabulary.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.ImgValidCode = validCodeBiz.CreateNewValidCode();
+            ViewBag.ImgValidCode = _validCodeBiz.CreateNewValidCode();
+            return View();
+        }
+
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ImgValidCode = _validCodeBiz.CreateNewValidCode();
             return View();
         }
 
@@ -37,7 +50,7 @@ namespace MusicAndVocabulary.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = validCodeBiz.CheckValidCode(model.ValidateCode);
+                var result = _validCodeBiz.CheckValidCode(model.ValidateCode);
                 if (result.Succeeded)
                 {
                     //to do 校验用户是否可注册
@@ -60,20 +73,67 @@ namespace MusicAndVocabulary.Controllers
 
                 //    return RedirectToAction("Index", "Home");
                 //}
-                AddErrors(result.Errors);
-                ViewBag.ImgValidCode = validCodeBiz.CreateNewValidCode();
-            }
+                ModelState.AddModelError("", result.Messages);
 
+            }
+            ViewBag.ImgValidCode = _validCodeBiz.CreateNewValidCode();
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
-        private void AddErrors(IEnumerable<string> result)
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            foreach (var error in result)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", error);
+                var result = _validCodeBiz.CheckValidCode(model.ValidateCode);
+                if (result.Succeeded)
+                {
+                    _serviceRule.ClearSessionAndCookie();
+                    var res = _userBiz.MatchAccount(model.UserName, model.Password);
+                    if (res.Succeeded)
+                    {
+                        string userData = model.UserName + "|" + model.Password + "|" + res.Userinfo.UserId;
+                        _serviceRule.SetFormsAuthenticationTicket(1, model.UserName, DateTime.Now, DateTime.Now.AddDays(100)
+                        , false, userData);
+                        return RedirectToLocal(returnUrl);
+                    }
+                    ModelState.AddModelError("", res.Messages);
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Messages);
+                }
+
             }
+            ViewBag.ImgValidCode = _validCodeBiz.CreateNewValidCode();
+            return View(model);
+        }
+
+
+        /// <summary>
+        /// 注销
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Logout()
+        {
+            _serviceRule.ClearSessionAndCookie();
+            return RedirectToAction("Login");
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

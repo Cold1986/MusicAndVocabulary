@@ -41,7 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CommonResult.cs" />
+    <Compile Include="CommonResponse.cs" />
+    <Compile Include="UserResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicAndVocabulary.Model\MusicAndVocabulary.Model.csproj">
+      <Project>{a8b84842-3efe-4131-889f-8dde625b96c9}</Project>
+      <Name>MusicAndVocabulary.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

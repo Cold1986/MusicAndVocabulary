@@ -2,23 +2,15 @@
 
 namespace MusicAndVocabulary.ViewModels
 {
-    public class RegisterViewModel
+    public class LoginViewModel
     {
         /// <summary>
         /// 用户名
         /// </summary>
         [Required]
-        [StringLength(20,ErrorMessage = "{0} 至少 {2} 个字节.", MinimumLength =4)]
+        [StringLength(20, ErrorMessage = "{0} 至少 {2} 个字节.", MinimumLength = 4)]
         [Display(Name = "用户名")]
         public string UserName { get; set; }
-
-        /// <summary>
-        /// 邮箱
-        /// </summary>
-        [Required]
-        [EmailAddress]
-        [Display(Name = "邮箱")]
-        public string Email { get; set; }
 
         /// <summary>
         /// 密码
@@ -30,12 +22,10 @@ namespace MusicAndVocabulary.ViewModels
         public string Password { get; set; }
 
         /// <summary>
-        /// 密码确认
+        /// 记住登录
         /// </summary>
-        [DataType(DataType.Password)]
-        [Display(Name = "密码确认")]
-        [Compare("Password", ErrorMessage = "两次密码不一致.")]
-        public string ConfirmPassword { get; set; }
+        [Display(Name = "记住登录")]
+        public bool RememberMe { get; set; }
 
         /// <summary>
         /// 验证码

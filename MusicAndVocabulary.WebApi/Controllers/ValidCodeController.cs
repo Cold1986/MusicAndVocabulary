@@ -12,7 +12,7 @@ namespace MusicAndVocabulary.WebApi.Controllers
 {
     public class ValidCodeController : ApiController
     {
-        IValidCodeBiz validCodeBiz = new ValidCodeBiz();
+        IValidCodeRule validCodeBiz = new ValidCodeRule();
         public Task<string> GetBase64ValidCodeImg()
         {
             //var result = Task.Factory.StartNew(() => { validCodeBiz.CreateNewValidCode(); });

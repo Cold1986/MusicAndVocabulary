@@ -13,16 +13,16 @@ namespace MusicAndVocabulary.Implement
     /// <summary>
     /// 验证码业务类
     /// </summary>
-    public class ValidCodeBiz : IValidCodeBiz
+    public class ValidCodeRule : IValidCodeRule
     {
         private const string validKey = "coldValid";
-        private CommonResult _commonResult;
+        private CommonResponse<string> _commonResult;
 
-        public ValidCodeBiz()
+        public ValidCodeRule()
         {
-            _commonResult = new CommonResult()
+            _commonResult = new CommonResponse<string>()
             {
-                Errors = new string[] { EnumHelper.GetDesc(EnumValidCode.HandleException) },
+                Messages = EnumHelper.GetDesc(EnumValidCode.HandleException),
                 Succeeded = false
             };
         }
@@ -32,24 +32,24 @@ namespace MusicAndVocabulary.Implement
         /// </summary>
         /// <param name="InputCode">传入值</param>
         /// <returns></returns>
-        public CommonResult CheckValidCode(string InputCode)
+        public CommonResponse<string> CheckValidCode(string InputCode)
         {
             var cookieCode = CookieHelper.GetCookieValue("validCode");
             if (string.IsNullOrEmpty(cookieCode))
             {
-                _commonResult.Errors = new string[] { EnumHelper.GetDesc(EnumValidCode.HandleExpired) };
+                _commonResult.Messages = EnumHelper.GetDesc(EnumValidCode.HandleExpired);
             }
             else
             {
                 var inputCodeMd5 = MD5Encrypt.GetStrMD5(InputCode + validKey);
                 if (inputCodeMd5 != cookieCode)
                 {
-                    _commonResult.Errors = new string[] { EnumHelper.GetDesc(EnumValidCode.HandleCheckError) };
+                    _commonResult.Messages = EnumHelper.GetDesc(EnumValidCode.HandleCheckError);
                 }
                 else
                 {
                     _commonResult.Succeeded = true;
-                    _commonResult.Errors = null;
+                    _commonResult.Messages = null;
                 }
             }
 

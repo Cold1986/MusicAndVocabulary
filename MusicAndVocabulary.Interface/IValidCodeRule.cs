@@ -10,7 +10,7 @@ namespace MusicAndVocabulary.Interface
     /// <summary>
     /// 验证码接口
     /// </summary>
-    public interface IValidCodeBiz
+    public interface IValidCodeRule
     {
         /// <summary>
         /// 创建验证码
@@ -23,6 +23,6 @@ namespace MusicAndVocabulary.Interface
         /// </summary>
         /// <param name="InputCode">传入值</param>
         /// <returns></returns>
-        CommonResult CheckValidCode(string InputCode);
+        CommonResponse<string> CheckValidCode(string InputCode);
     }
 }
